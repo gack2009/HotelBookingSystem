@@ -16,7 +16,11 @@ jobs:
       contents: read #This is required for actions/checkout
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Change working directory
+        run: cd src/WebApplication1
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
@@ -24,7 +28,7 @@ jobs:
           dotnet-version: '9.x'
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build HotelBookingAPI.sln --configuration Release
 
       - name: dotnet publish
         run: dotnet publish -c Release -o "${{env.DOTNET_ROOT}}/myapp"
