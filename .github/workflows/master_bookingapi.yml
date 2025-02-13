@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
         
       - name: Change working directory
-        run: cd src/WebApplication1
+        run: cd WebApplication1
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
