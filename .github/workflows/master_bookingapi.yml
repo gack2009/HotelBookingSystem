@@ -36,6 +36,9 @@ jobs:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp
 
+      - name: Install EF Core CLI
+        run: dotnet tool install --global dotnet-ef
+
       - name: Run EF Migrations on Azure SQL Database
         run: |
           dotnet ef database update --connection "Server=tcp:hotelbooking-sql123.database.windows.net,1433;Initial Catalog=HotelBookingDB;Persist Security Info=False;User ID=Gazureadmin;Password=${{ secrets.AZURE_SQL_PASSWORD }};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
